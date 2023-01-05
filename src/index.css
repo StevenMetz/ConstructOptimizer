@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+.scrollable-div {
+  background-color: #faf8f8;
+  height: 150px;
+  overflow: auto;
+  margin: 20px;
+  text-align: justify;
+  padding: 20px;
+}
