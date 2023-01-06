@@ -36,12 +36,13 @@ export function Login() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Email: <input name="email" type="email" />
+      <form className="form-control" onSubmit={handleSubmit}>
+        <div className=" col mb-3">
+          Email address:{" "}
+          <input className=" col sm-2 col-form-label" name="email" type="email" placeholder="name@example.com" />
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="col mb-3">
+          Password: <input className="form-control-md" placeholder="Password" name="password" type="password" />
         </div>
         <button type="submit">Login</button>
       </form>

@@ -2,7 +2,8 @@ export function TodosNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateTodo(params, () => event.target.reset());
+    props.onCreateTodo(params);
+    event.target.reset();
   };
 
   return (
@@ -10,14 +11,14 @@ export function TodosNew(props) {
       <h1>New Todo</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Task: <input name="name" type="text" />
+          Task: <input className="form-control-sm" name="name" type="text" />
         </div>
         <div>
-          Description: <input name="description" type="text" />
+          Description: <input className="form-control-lg" name="description" type="text" row="3" />
         </div>
         <div>
           Employee:
-          <select name="employee_id" class="form-select" aria-label="Default select example">
+          <select name="employee_id" className="form-select-md" aria-label="Default select example">
             <option selected>Select employee</option>
             {props.employees.map((employee) => (
               <option value={employee.id}>

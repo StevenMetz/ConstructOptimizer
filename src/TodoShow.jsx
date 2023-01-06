@@ -3,7 +3,8 @@ export function TodosShow(props) {
     event.preventDefault();
     const params = new FormData(event.target);
     console.log(params);
-    props.onUpdateTodo(props.todo.id, params, () => event.target.reset());
+    props.onUpdateTodo(props.todo.id, params);
+    event.target.reset();
   };
   function handleClick() {
     props.onDestroyTodo(props.todo);
@@ -18,6 +19,11 @@ export function TodosShow(props) {
           Description:{" "}
           <p>
             <input className="form-control form-control-lg" defaultValue={props.todo.description} name="description" />
+          </p>
+          <p>
+            <strong>Assigned to:</strong>
+            {` ${props.todo.employee_first}
+             ${props.todo.employee_last}`}
           </p>
         </div>
         <button type="submit" className="btn btn-primary">
