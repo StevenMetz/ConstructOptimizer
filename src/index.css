@@ -9,3 +9,12 @@ html {
   text-align: justify;
   padding: 20px;
 }
+
+#login{
+  background-image:url(./assets/house.jpeg);
+  height: 100vh;
+}
+
+.color-white{
+  color: white;
+}

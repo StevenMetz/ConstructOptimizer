@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export function TodosIndex(props) {
-  const handleDone = (event) => {
-    axios.patch("http://localhost:3000.json");
-  };
   const [isDone, setIsDone] = useState(false);
   const toggleDone = () => setIsDone(!isDone);
   useEffect(() => {

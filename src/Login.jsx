@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+import { Signup } from "./Signup";
+import { Modal } from "./Modal";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -8,6 +10,14 @@ if (jwt) {
 
 export function Login() {
   const [errors, setErrors] = useState([]);
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
+
+  const handleSignupShow = () => {
+    setIsSignupVisible(true);
+  };
+  const handleSignupClose = () => {
+    setIsSignupVisible(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +30,7 @@ export function Login() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/todos"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
         console.log(error.response);
@@ -30,22 +40,48 @@ export function Login() {
 
   return (
     <div id="login">
-      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form className="form-control" onSubmit={handleSubmit}>
-        <div className=" col mb-3">
-          Email address:{" "}
-          <input className=" col sm-2 col-form-label" name="email" type="email" placeholder="name@example.com" />
-        </div>
-        <div className="col mb-3">
-          Password: <input className="form-control-md" placeholder="Password" name="password" type="password" />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      <div className="container-lg">
+        <h3 className="color-white">Login</h3>
+        <hr />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="color-white" for="exampleInputEmail1">
+              Email address
+            </label>
+            <input type="email" name="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
+          </div>
+          <div className="form-group">
+            <label className="color-white" for="exampleInputPassword1">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>{" "}
+          <button onClick={handleSignupShow} className="btn btn-primary">
+            Signup
+          </button>
+          {"    "}
+          <button type="button" className="btn btn-primary">
+            Reset Password
+          </button>
+        </form>
+      </div>
+      <Modal show={isSignupVisible} onClose={handleSignupClose}>
+        <Signup />
+      </Modal>
     </div>
   );
 }

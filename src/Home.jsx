@@ -61,8 +61,9 @@ export function Home() {
   };
   const handleDeleteTodo = (todo) => {
     console.log("handleDestroyTodo", todo);
-    axios.delete(`http://localhost:3000/todos/${todo.id}.json`).then((respsone) => {
-      setTodos(todos.filter((p) => p.id !== todo.id));
+    axios.delete(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
+      console.log(response.data);
+      setTodos(todo.filter((p) => p.id !== todo.id));
       handleClose();
     });
   };
@@ -79,7 +80,7 @@ export function Home() {
         <TodosShow todo={currentTodo} onUpdateTodo={handleUpdateTodo} onDestroyTodo={handleDeleteTodo} />
       </Modal>
       <TodosNew onCreateTodo={handleCreateTodo} employees={employees} />
-      <TodosIndex todos={todos} employees={employees} onShowTodo={handleShowTodo} />
+      <TodosIndex todos={todos} onShowTodo={handleShowTodo} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export function TodosNew(props) {
           <select name="employee_id" className="form-select-md" aria-label="Default select example">
             <option selected>Select employee</option>
             {props.employees.map((employee) => (
-              <option value={employee.id}>
+              <option key={employee.id} value={employee.id}>
                 {employee.first_name} {employee.last_name}
               </option>
             ))}
