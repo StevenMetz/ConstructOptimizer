@@ -45,7 +45,7 @@ export function Login() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <div className="container-lg">
+      <div className="text-center">
         <h3 className="color-white">Login</h3>
         <hr />
         <form onSubmit={handleSubmit}>

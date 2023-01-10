@@ -30,10 +30,10 @@ export function TodosNew() {
       <h1>New Todo</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Task: <input className="form-control-sm" name="name" type="text" />
+          Task: <textarea className="form-control-sm" name="name" type="text" />
         </div>
         <div>
-          Description: <input className="form-control-lg" name="description" type="text" row="3" />
+          Description: <textarea className="form-control-lg" name="description" type="text" row="3" />
         </div>
         <div>
           Employee:

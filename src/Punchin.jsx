@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment/moment";
 import { useState, useEffect } from "react";
 
 export function Punchin() {
@@ -25,7 +26,7 @@ export function Punchin() {
     event.target.reset();
   };
   const [time, setTime] = useState(Date());
-
+  let friendly = moment(time).format("MMMM Do YYYY, h:mm:ss a");
   let timeClock;
   if (punchedIn === true) {
     timeClock = (
@@ -51,7 +52,7 @@ export function Punchin() {
   return (
     <div>
       <div>
-        <h2>Time In:</h2>
+        <h2>Time In: {friendly}</h2>
         <h2>Time out:</h2>
         <h3>Total Time:</h3>
         <br />

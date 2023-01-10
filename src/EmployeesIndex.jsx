@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { EmployeesAxios } from "./EmployeesAxios";
+import { Modal } from "./Modal";
+
 export function EmployeesIndex() {
   const [employees, setEmployees] = useState([]);
   const handleIndexEmployees = () => {

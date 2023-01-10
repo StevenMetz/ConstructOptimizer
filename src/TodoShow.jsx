@@ -18,7 +18,11 @@ export function TodosShow(props) {
         <div className="scrollable-div">
           Description:{" "}
           <p>
-            <input className="form-control form-control-lg" defaultValue={props.todo.description} name="description" />
+            <textarea
+              className="form-control form-control-lg"
+              defaultValue={props.todo.description}
+              name="description"
+            />
           </p>
           <p>
             <strong>Assigned to:</strong>
