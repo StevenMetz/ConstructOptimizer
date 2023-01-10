@@ -9,7 +9,7 @@ export function TodosIndex(props) {
   }, [isDone]);
   return (
     <div>
-      <h1>All Todos</h1>
+      <h1>Assigned Tasks</h1>
       {props.todos.map((todo) => (
         <div key={todo.id}>
           <h2>{todo.name}</h2>

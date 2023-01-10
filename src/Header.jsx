@@ -1,39 +1,9 @@
-import { useState } from "react";
 import { LogoutLink } from "./Logout";
 export function Header() {
-  const [isSignupvisible, setIsSignupVisible] = useState(false);
-  const [isLoginvisible, setIsLoginVisible] = useState(false);
-  const handleSignupShow = () => {
-    setIsSignupVisible(true);
-  };
-  const handleSignupClose = () => {
-    setIsSignupVisible(false);
-  };
-  const handleLoginShow = () => {
-    setIsLoginVisible(true);
-  };
-  const handleLoginClose = () => {
-    setIsLoginVisible(false);
-  };
   let authenticationLinks;
-  if (localStorage.jwt === undefined) {
+  if (localStorage.jwt !== undefined) {
     authenticationLinks = (
-      <>
-        <li>
-          <a className="nav-link" href="#" onClick={handleLoginShow}>
-            Login
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link active" href="#" onClick={handleSignupShow}>
-            Signup
-          </a>
-        </li>
-      </>
-    );
-  } else {
-    authenticationLinks = (
-      <li>
+      <li className="nav-item">
         <a className="nav-link" href="#login">
           <LogoutLink />
         </a>
@@ -44,8 +14,8 @@ export function Header() {
     <header>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Construction Todos
+          <a className="navbar-brand" href="/todos">
+            Construction To Do
           </a>
           <button
             className="navbar-toggler"
@@ -61,21 +31,11 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a className="nav-link active" aria-current="page" href="/todos">
                   Home
                 </a>
               </li>
-              <li className="nav-item">{authenticationLinks}</li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Login
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Signup
-                </a>
-              </li>
+              {authenticationLinks}
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -88,21 +48,21 @@ export function Header() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/todos/new">
                       Assign Tasks
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
+                    <a className="dropdown-item" href="/employees">
+                      Employees
                     </a>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
+                    <a className="dropdown-item" href="/employees/punchin">
+                      Time Clock
                     </a>
                   </li>
                 </ul>

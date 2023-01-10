@@ -1,15 +1,21 @@
-export function EmployeesIndex(props) {
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { EmployeesAxios } from "./EmployeesAxios";
+export function EmployeesIndex() {
+  const [employees, setEmployees] = useState([]);
+  const handleIndexEmployees = () => {
+    console.log("Wait I'm getting Da Minions");
+    axios.get("http://localhost:3000/employees.json").then((response) => {
+      console.log("Hello my Minions");
+      console.log(response.data);
+      setEmployees(response.data);
+    });
+  };
+
+  useEffect(handleIndexEmployees, []);
   return (
     <div>
-      <h1>All employees</h1>
-      {props.employees.map((employee) => {
-        <div key={employee.id}>
-          <h1>{`${employee.first_name} ${employee.last_nam}`}</h1>
-          <p>Email: {` ${employee.email}`}</p>
-          <p>Manager: {` ${employee.manager}`}</p>
-          <button>More</button>
-        </div>;
-      })}
+      <EmployeesAxios employee={employees} />
     </div>
   );
 }

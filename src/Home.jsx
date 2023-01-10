@@ -2,17 +2,13 @@ import { TodosIndex } from "./TodoIndex";
 import { useState, useEffect } from "react";
 import { Modal } from "./Modal";
 import { TodosShow } from "./TodoShow";
-import { TodosNew } from "./TodosNew";
 import axios from "axios";
-import { Signup } from "./Signup";
-import { Login } from "./Login";
-import { LogoutLink } from "./Logout";
-import { EmployeesIndex } from "./EmployeesIndex";
 export function Home() {
   const [todos, setTodos] = useState([]);
   const [isTodoShowVisible, setIsTodoShowVisible] = useState(false);
   const [currentTodo, setCurrentTodo] = useState({});
   const [employees, setEmployees] = useState([]);
+
   const handleIndexEmployees = () => {
     console.log("handleIndexTodos");
     axios.get("http://localhost:3000/employees.json").then((response) => {
@@ -53,12 +49,12 @@ export function Home() {
     console.log("handleClose");
     setIsTodoShowVisible(false);
   };
-  const handleCreateTodo = (params) => {
-    console.log(handleCreateTodo, params);
-    axios.post("http://localhost:3000/todos.json", params).then((response) => {
-      setTodos([...todos, response.data]);
-    });
-  };
+  // const handleCreateTodo = (params) => {
+  //   console.log(handleCreateTodo, params);
+  //   axios.post("http://localhost:3000/todos.json", params).then((response) => {
+  //     setTodos([...todos, response.data]);
+  //   });
+  // };
   const handleDeleteTodo = (todo) => {
     console.log("handleDestroyTodo", todo);
     axios.delete(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
@@ -72,14 +68,9 @@ export function Home() {
 
   return (
     <div className="container">
-      <Login />
-      <LogoutLink />
-      <Signup />
-      <EmployeesIndex employees={employees} />
       <Modal show={isTodoShowVisible} onClose={handleClose}>
         <TodosShow todo={currentTodo} onUpdateTodo={handleUpdateTodo} onDestroyTodo={handleDeleteTodo} />
       </Modal>
-      <TodosNew onCreateTodo={handleCreateTodo} employees={employees} />
       <TodosIndex todos={todos} onShowTodo={handleShowTodo} />
     </div>
   );

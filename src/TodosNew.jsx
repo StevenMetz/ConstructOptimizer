@@ -1,13 +1,32 @@
-export function TodosNew(props) {
+import axios from "axios";
+import { useState, useEffect } from "react";
+export function TodosNew() {
+  const [todos, setTodos] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const handleIndexEmployees = () => {
+    console.log("handleIndexTodos");
+    axios.get("http://localhost:3000/employees.json").then((response) => {
+      console.log("hello");
+      console.log(response.data);
+      setEmployees(response.data);
+    });
+  };
+  const handleCreateTodo = (params) => {
+    console.log(handleCreateTodo, params);
+    axios.post("http://localhost:3000/todos.json", params).then((response) => {
+      setTodos([...todos, response.data]);
+    });
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateTodo(params);
+    handleCreateTodo(params);
     event.target.reset();
   };
+  useEffect(handleIndexEmployees, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>New Todo</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -20,7 +39,7 @@ export function TodosNew(props) {
           Employee:
           <select name="employee_id" className="form-select-md" aria-label="Default select example">
             <option selected>Select employee</option>
-            {props.employees.map((employee) => (
+            {employees.map((employee) => (
               <option key={employee.id} value={employee.id}>
                 {employee.first_name} {employee.last_name}
               </option>
