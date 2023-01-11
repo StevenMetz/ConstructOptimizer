@@ -11,24 +11,7 @@ export function EmployeesAxios(props) {
   const handleTimeClockClose = () => {
     setIsTimeClockVisible(false);
   };
-  const timeClock = props.employee.map((employee) => {
-    return (
-      <div className="scrollable-div" key={employee.id}>
-        <p>
-          {employee.time_clock.map((punchin) => {
-            return (
-              <div>
-                <h6>{moment(punchin.date).format("MMM Do YY")}</h6>
-                <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
-                <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
-              </div>
-            );
-          })}
-        </p>
-      </div>
-    );
-  });
-  const employee = props.employee.map((employee) => {
+  const employees = props.employee.map((employee) => {
     return (
       <div key={employee.id}>
         <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
@@ -48,7 +31,7 @@ export function EmployeesAxios(props) {
             })}
           </p>
         </Modal>
-        <button>More</button>
+        <button onClick={() => props.onShowEmployee(employee)}>More</button>
         <button onClick={handleTimeClockShow}>Time Clock</button>
       </div>
     );
@@ -57,7 +40,7 @@ export function EmployeesAxios(props) {
   return (
     <div>
       <h1>Employees</h1>
-      {employee}
+      {employees}
     </div>
   );
 }

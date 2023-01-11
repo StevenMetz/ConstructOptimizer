@@ -18,6 +18,18 @@ export function Login() {
   const handleSignupClose = () => {
     setIsSignupVisible(false);
   };
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange = (evnt) => {
+    setPasswordInput(evnt.target.value);
+  };
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,7 +60,7 @@ export function Login() {
       <div className="text-center">
         <h3 className="color-white">Login</h3>
         <hr />
-        <form onSubmit={handleSubmit}>
+        <form className="myForm" onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="color-white" for="exampleInputEmail1">
               Email address
@@ -59,13 +71,19 @@ export function Login() {
             <label className="color-white" for="exampleInputPassword1">
               Password
             </label>
-            <input
-              name="password"
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
+            <div className="input-group mb3">
+              <input
+                type={passwordType}
+                onChange={handlePasswordChange}
+                value={passwordInput}
+                name="password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <span class="btn btn-outline-primary" onClick={togglePassword} id="button-addon1">
+                SHOW
+              </span>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary">
             Login
