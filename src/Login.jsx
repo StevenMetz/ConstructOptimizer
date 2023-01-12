@@ -93,7 +93,7 @@ export function Login() {
           </button>
           {"    "}
           <button type="button" className="btn btn-primary">
-            Reset Password
+            Forgot Password
           </button>
         </form>
       </div>
