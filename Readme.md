@@ -36,4 +36,4 @@ Future Features Include but not limited to
 1. Employee can see how far a jobsite is away from their house.
 2. Foremen will get a text message notification that "X" Employee has completed "X" tasks
 3. add pop ups that tell the user when a task or employee is deleted
-4.
+
