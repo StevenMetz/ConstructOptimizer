@@ -12,6 +12,7 @@ export function EmployeesAxios(props) {
     setIsTimeClockVisible(false);
   };
   const employees = props.employee.map((employee) => {
+    console.log("employee", employee);
     return (
       <div key={employee.id}>
         <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
@@ -19,7 +20,6 @@ export function EmployeesAxios(props) {
         <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
           <h4>Time Clocks</h4>
           <p>
-            {" "}
             Time Clock:{" "}
             {employee.time_clock.map((punchin) => {
               return (
@@ -31,8 +31,12 @@ export function EmployeesAxios(props) {
             })}
           </p>
         </Modal>
-        <button onClick={() => props.onShowEmployee(employee)}>More</button>
-        <button onClick={handleTimeClockShow}>Time Clock</button>
+        <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
+          More
+        </button>{" "}
+        <button onClick={handleTimeClockShow} className="btn btn-primary">
+          Time Clock
+        </button>
       </div>
     );
   });

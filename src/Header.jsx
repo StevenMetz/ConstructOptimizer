@@ -4,9 +4,7 @@ export function Header() {
   if (localStorage.jwt !== undefined) {
     authenticationLinks = (
       <li className="nav-item">
-        <a className="nav-link" href="#login">
-          <LogoutLink />
-        </a>
+        <LogoutLink />
       </li>
     );
   }

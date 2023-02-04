@@ -6,7 +6,7 @@ export function TodosIndex(props) {
   const toggleDone = () => setIsDone(!isDone);
   useEffect(() => {
     console.log("isDone is:", isDone);
-  }, [isDone]);
+  }, []);
   return (
     <div>
       <h1>Assigned Tasks</h1>
@@ -14,17 +14,35 @@ export function TodosIndex(props) {
         <div key={todo.id}>
           <h2>{todo.name}</h2>
           <p>{todo.description}</p>
-          <button
-            onClick={() => {
-              axios.patch(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
-                console.log(response);
-              });
-            }}
-          >
-            {todo.done}
-            Done
+          {todo.done === false && (
+            <button
+              name="done"
+              className="btn btn-outline-success"
+              onClick={() => {
+                axios.patch(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
+                  console.log(response);
+                });
+              }}
+            >
+              Done
+            </button>
+          )}
+          {todo.done === true && (
+            <button
+              name="done"
+              className="btn btn-outline-danger"
+              onClick={() => {
+                axios.patch(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
+                  console.log(response);
+                });
+              }}
+            >
+              undo
+            </button>
+          )}
+          <button className="btn btn-outline-primary" onClick={() => props.onShowTodo(todo)}>
+            More info
           </button>
-          <button onClick={() => props.onShowTodo(todo)}>More info</button>
         </div>
       ))}
     </div>

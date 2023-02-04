@@ -33,7 +33,9 @@ export function TodosShow(props) {
         <button type="submit" className="btn btn-primary">
           Update
         </button>
-        <button onClick={handleClick}>Delete</button>
+        <button onClick={handleClick} className="btn btn-danger">
+          Delete
+        </button>
       </form>
     </div>
   );
