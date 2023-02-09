@@ -19,43 +19,51 @@ export function EmployeesShow(props) {
   }
   return (
     <div className="container">
-      <div className="form-control">
-        <form onSubmit={handleSubmit}>
-          <div className="form-control">
-            <p>First Name:</p>
-            <input type="text" name="first_name" defaultValue={props.employees.first_name} />
-          </div>
-          <div className="form-control">
-            Last Name:
-            <input type="text" name="last_name" defaultValue={props.employees.last_name} />
-          </div>
-          <div className="form-control">
-            Email:
-            <input type="text" name="email" defaultValue={props.employees.email} />
-          </div>
-          <div className="form-control">
-            Address:
-            <input type="text" name="address" defaultValue={props.employees.address} />
-          </div>
-          <div className="form-control">
-            Picture:
-            <input type="text" name="image" defaultValue={props.employees.image} />
-          </div>
-          <div className="form-control">
-            Manager:
-            <select name="manager" className="form-select-md" aria-label="Default select example">
-              <option selected>{employee}</option>
-              <option value={!manager}>Employee</option>
-              <option value={manager}>Manager</option>
-            </select>
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Update
-          </button>
-          <button className="btn btn-danger" onClick={handleClick}>
-            Fire Employee
-          </button>
-        </form>
+      <div className="row">
+        <div className="form-control">
+          <form className=" row g-4" onSubmit={handleSubmit}>
+            <div className="col-md-4">
+              <label className="form-label">First Name</label>
+              <input type="text" name="first_name" className="form-control" defaultValue={props.employees.first_name} />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Last Name</label>
+              <input type="text" name="last_name" className="form-control" defaultValue={props.employees.last_name} />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Email</label>
+              <input type="text" name="email" className="form-control" defaultValue={props.employees.email} />
+            </div>
+            <div className="col-md-12">
+              <label className="form-label">Address</label>
+              <input type="text" name="address" className="form-control" defaultValue={props.employees.address} />
+            </div>
+            <div className="col-4">
+              <label className="form-label">Picture</label>
+              <input type="text" name="image" className="form-control" defaultValue={props.employees.image} />
+            </div>
+            <div>
+              <div>
+                <label className="form-label-md">Role </label>
+                <select name="manager" className="form-select-sm" aria-label="Default select example">
+                  <option selected>{employee}</option>
+                  <option value={!manager}>Employee</option>
+                  <option value={manager}>Manager</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-6">
+              <button type="submit" className="btn btn-primary">
+                Update
+              </button>
+            </div>
+            <div className="col-6">
+              <button className="btn btn-danger" onClick={handleClick}>
+                Fire Employee
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
