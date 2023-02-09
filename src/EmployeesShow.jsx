@@ -34,6 +34,14 @@ export function EmployeesShow(props) {
             <input type="text" name="email" defaultValue={props.employees.email} />
           </div>
           <div className="form-control">
+            Address:
+            <input type="text" name="address" defaultValue={props.employees.address} />
+          </div>
+          <div className="form-control">
+            Picture:
+            <input type="text" name="image" defaultValue={props.employees.image} />
+          </div>
+          <div className="form-control">
             Manager:
             <select name="manager" className="form-select-md" aria-label="Default select example">
               <option selected>{employee}</option>

@@ -14,28 +14,36 @@ export function EmployeesAxios(props) {
   const employees = props.employee.map((employee) => {
     console.log("employee", employee);
     return (
-      <div key={employee.id}>
-        <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
-        <p> Email: {employee.email}</p>
-        <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
-          <h4>Time Clocks</h4>
-          {employee.time_clock.map((punchin) => {
-            return (
-              <div>
-                <p>{moment(punchin.created_at).format("MMMM Do YYYY, h:mm:ss a")} </p>
-                <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
-                <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
-                <button className="btn btn-success">Edit</button>
-              </div>
-            );
-          })}
-        </Modal>
-        <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
-          More
-        </button>{" "}
-        <button onClick={handleTimeClockShow} className="btn btn-primary">
-          Time Clock
-        </button>
+      <div className="container" key={employee.id}>
+        <div className=" row gx-5">
+          <div className="card">
+            <img src={employee.image} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
+              <p> Email: {employee.email}</p>
+              <p> Address: {employee.address}</p>
+            </div>
+            <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
+              <h4>Time Clocks</h4>
+              {employee.time_clock.map((punchin) => {
+                return (
+                  <div>
+                    <p>{moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                    <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                    <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                    <button className="btn btn-success">Edit</button>
+                  </div>
+                );
+              })}
+            </Modal>
+            <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
+              More
+            </button>{" "}
+            <button onClick={handleTimeClockShow} className="btn btn-primary">
+              Time Clock
+            </button>
+          </div>
+        </div>
       </div>
     );
   });
