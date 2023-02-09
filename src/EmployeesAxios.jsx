@@ -21,7 +21,6 @@ export function EmployeesAxios(props) {
             <div className="card-body">
               <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
               <p> Email: {employee.email}</p>
-              <p> Address: {employee.address}</p>
             </div>
             <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
               <h4>Time Clocks</h4>

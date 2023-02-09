@@ -45,7 +45,7 @@ export function EmployeesShow(props) {
             <div>
               <div>
                 <label className="form-label-md">Role </label>
-                <select name="manager" className="form-select-sm" aria-label="Default select example">
+                <select name="manager" className="form-select-auto" aria-label="Default select example">
                   <option selected>{employee}</option>
                   <option value={!manager}>Employee</option>
                   <option value={manager}>Manager</option>
