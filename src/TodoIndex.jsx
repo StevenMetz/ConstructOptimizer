@@ -22,6 +22,7 @@ export function TodosIndex(props) {
                 axios.patch(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
                   console.log(response);
                 });
+                window.location.reload(false);
               }}
             >
               Done
@@ -35,6 +36,7 @@ export function TodosIndex(props) {
                 axios.patch(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {
                   console.log(response);
                 });
+                window.location.reload(false);
               }}
             >
               undo

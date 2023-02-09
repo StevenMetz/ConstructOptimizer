@@ -30,7 +30,6 @@ export function EmployeesIndex() {
           }
         })
       );
-      // successCallback();
       handleClose();
     });
   };

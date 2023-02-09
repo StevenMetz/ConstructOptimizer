@@ -12,7 +12,8 @@ html {
 
 #login{
   background-image:url(./assets/house.jpeg);
-  height: 100vh;
+  height: 200vh;
+  width: 200vh;
 }
 
 .color-white{

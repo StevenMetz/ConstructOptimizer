@@ -19,17 +19,16 @@ export function EmployeesAxios(props) {
         <p> Email: {employee.email}</p>
         <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
           <h4>Time Clocks</h4>
-          <p>
-            Time Clock:{" "}
-            {employee.time_clock.map((punchin) => {
-              return (
-                <div>
-                  <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
-                  <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
-                </div>
-              );
-            })}
-          </p>
+          {employee.time_clock.map((punchin) => {
+            return (
+              <div>
+                <p>{moment(punchin.created_at).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                <button className="btn btn-success">Edit</button>
+              </div>
+            );
+          })}
         </Modal>
         <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
           More

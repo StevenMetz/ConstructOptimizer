@@ -42,7 +42,7 @@ export function Header() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Tasks
+                  Admin
                 </a>
                 <ul className="dropdown-menu">
                   <li>
