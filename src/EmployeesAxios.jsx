@@ -2,17 +2,26 @@ import moment from "moment/moment";
 import { Modal } from "./Modal";
 import { useState } from "react";
 export function EmployeesAxios(props) {
-  const [isTimeClockVisible, setIsTimeClockVisible] = useState(false);
+  // const [isTimeClockVisible, setIsTimeClockVisible] = useState(false);
 
-  const handleTimeClockShow = () => {
-    setIsTimeClockVisible(true);
-  };
+  // const handleTimeClockShow = () => {
+  //   setIsTimeClockVisible(true);
+  // };
 
-  const handleTimeClockClose = () => {
-    setIsTimeClockVisible(false);
-  };
+  // const handleTimeClockClose = () => {
+  //   setIsTimeClockVisible(false);
+  // };
   const employees = props.employee.map((employee) => {
-    console.log("employee", employee);
+    const [isEmployeeTimeClockVisible, setIsEmployeeTimeClockVisible] = useState(false);
+
+    const handleEmployeeTimeClockClose = () => {
+      setIsEmployeeTimeClockVisible(false);
+    };
+
+    const handleEmployeeTimeClockShow = () => {
+      setIsEmployeeTimeClockVisible(true);
+    };
+
     return (
       <div className="container" key={employee.id}>
         <div className=" row gx-5">
@@ -22,12 +31,12 @@ export function EmployeesAxios(props) {
               <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
               <p> Email: {employee.email}</p>
             </div>
-            <Modal show={isTimeClockVisible} onClose={handleTimeClockClose}>
+            <Modal show={isEmployeeTimeClockVisible} onClose={handleEmployeeTimeClockClose}>
               <h4>Time Clocks</h4>
               {employee.time_clock.map((punchin) => {
                 return (
                   <div>
-                    <p>{moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                    <p>{moment(punchin.time_in).format("MMMM Do YYYY")} </p>
                     <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
                     <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
                     <button className="btn btn-success">Edit</button>
@@ -38,7 +47,7 @@ export function EmployeesAxios(props) {
             <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
               More
             </button>{" "}
-            <button onClick={handleTimeClockShow} className="btn btn-primary">
+            <button onClick={handleEmployeeTimeClockShow} className="btn btn-primary">
               Time Clock
             </button>
           </div>
