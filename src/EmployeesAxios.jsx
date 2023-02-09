@@ -2,15 +2,6 @@ import moment from "moment/moment";
 import { Modal } from "./Modal";
 import { useState } from "react";
 export function EmployeesAxios(props) {
-  // const [isTimeClockVisible, setIsTimeClockVisible] = useState(false);
-
-  // const handleTimeClockShow = () => {
-  //   setIsTimeClockVisible(true);
-  // };
-
-  // const handleTimeClockClose = () => {
-  //   setIsTimeClockVisible(false);
-  // };
   const employees = props.employee.map((employee) => {
     const [isEmployeeTimeClockVisible, setIsEmployeeTimeClockVisible] = useState(false);
 
