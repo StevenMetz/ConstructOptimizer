@@ -1,66 +1,58 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { EmployeesAxios } from "./EmployeesAxios";
+import moment from "moment/moment";
 import { Modal } from "./Modal";
-import { EmployeesShow } from "./EmployeesShow";
+import { useState } from "react";
+import { punchInShow } from "./PunchinShow";
+export function EmployeesIndex(props) {
+  console.log(props.first_name);
+  const employees = props.employees.map((employee) => {
+    const [isEmployeeTimeClockVisible, setIsEmployeeTimeClockVisible] = useState(false);
 
-export function EmployeesIndex() {
-  const [employees, setEmployees] = useState([]);
-  const [isEmployeeShowVisible, setIsEmployeeShowVisible] = useState(false);
-  const [currentEmployee, setCurrentEmployee] = useState({});
+    const handleEmployeeTimeClockClose = () => {
+      setIsEmployeeTimeClockVisible(false);
+    };
 
-  const handleIndexEmployees = () => {
-    console.log("Wait I'm getting Da Minions");
-    axios.get("http://localhost:3000/employees.json").then((response) => {
-      console.log("Hello my Minions");
-      console.log(response.data);
-      setEmployees(response.data);
-    });
-  };
-  const handleUpdatEemployee = (id, params) => {
-    console.log(handleUpdatEemployee, "yo", params);
-    axios.patch(`http://localhost:3000/employees/${id}.json`, params).then((response) => {
-      console.log(response.data);
-      setEmployees(
-        employees.map((employee) => {
-          if (employee.id === response.data.id) {
-            return response.data;
-          } else {
-            return employee;
-          }
-        })
-      );
-      handleClose();
-    });
-  };
-  const handleClose = () => {
-    console.log("handleClose");
-    setIsEmployeeShowVisible(false);
-  };
-  const handleShowEmployee = (employee) => {
-    console.log("handleShowEmployee", employee);
-    setIsEmployeeShowVisible(true);
-    setCurrentEmployee(employee);
-  };
-  const handleDeletEmployee = (employee) => {
-    console.log("handleDestroyemployee", employee);
-    axios.delete(`http://localhost:3000/employees/${employee.id}.json`).then((response) => {
-      console.log(response.data);
-      setEmployees(employee.filter((p) => p.id !== employee.id));
-      handleClose();
-    });
-  };
-  useEffect(handleIndexEmployees, []);
+    const handleEmployeeTimeClockShow = () => {
+      setIsEmployeeTimeClockVisible(true);
+    };
+    return (
+      <div className="container" key={employee.id}>
+        <div className=" row gx-5">
+          <div className="card">
+            <img src={employee.image} className="card-img-top" alt="..." />
+            <div className="card-body">
+              {console.log(employee.time_clock, "after Update have time_clocks?")}
+              <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
+              <p> Email: {employee.email}</p>
+            </div>
+            <Modal show={isEmployeeTimeClockVisible} onClose={handleEmployeeTimeClockClose}>
+              <h4>Time Clocks</h4>
+              {employee.time_clock.map((punchin) => {
+                return (
+                  <div key={punchin.id}>
+                    <p>{moment(punchin.time_in).format("MMMM Do YYYY")} </p>
+                    <p> Time in: {moment(punchin.time_in).format("MMMM Do YYYY, h:mm:ss a")} </p>
+                    <p> Time out: {moment(punchin.time_out).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                    <button className="btn btn-success">Edit</button>
+                  </div>
+                );
+              })}
+            </Modal>
+            <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
+              More
+            </button>{" "}
+            <button onClick={handleEmployeeTimeClockShow} className="btn btn-primary">
+              Time Clock
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div>
-      <Modal show={isEmployeeShowVisible} onClose={handleClose}>
-        <EmployeesShow
-          employees={currentEmployee}
-          onUpdateEmployee={handleUpdatEemployee}
-          onDestroyEmployee={handleDeletEmployee}
-        />
-      </Modal>
-      <EmployeesAxios employee={employees} onShowEmployee={handleShowEmployee} />
+      <h1>Employees</h1>
+      {employees}
     </div>
   );
 }

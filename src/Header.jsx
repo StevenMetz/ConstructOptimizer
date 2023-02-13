@@ -4,15 +4,15 @@ export function Header() {
   if (localStorage.jwt !== undefined) {
     authenticationLinks = (
       <li className="nav-item">
-        <LogoutLink />
+        <LogoutLink className="bs-white" />
       </li>
     );
   }
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg bg-light">
+    <header id="header">
+      <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/todos">
+          <a className="navbar-brand text-white" href="/todos">
             Construction To Do
           </a>
           <button
@@ -29,14 +29,14 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/todos">
+                <a className="nav-link active text-white" aria-current="page" href="/todos">
                   Home
                 </a>
               </li>
               {authenticationLinks}
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle text-white"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -64,9 +64,6 @@ export function Header() {
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
               </li>
             </ul>
             <form className="d-flex" role="search">

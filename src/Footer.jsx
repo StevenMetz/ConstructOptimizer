@@ -1,7 +1,9 @@
 export function Footer() {
   return (
     <footer>
-      <p className="color-white">Copyright 2022</p>
+      <p className="text-bg-dark" id="footer">
+        Copyright 2022
+      </p>
     </footer>
   );
 }

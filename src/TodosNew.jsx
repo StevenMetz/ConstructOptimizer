@@ -44,8 +44,6 @@ export function TodosNew() {
                 {employee.first_name} {employee.last_name}
               </option>
             ))}
-            {/* <option value="2">Two</option>
-            <option value="3">Three</option> */}
           </select>
         </div>
         <button type="submit">Assign task</button>

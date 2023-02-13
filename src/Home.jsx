@@ -49,12 +49,7 @@ export function Home() {
     console.log("handleClose");
     setIsTodoShowVisible(false);
   };
-  // const handleCreateTodo = (params) => {
-  //   console.log(handleCreateTodo, params);
-  //   axios.post("http://localhost:3000/todos.json", params).then((response) => {
-  //     setTodos([...todos, response.data]);
-  //   });
-  // };
+
   const handleDeleteTodo = (todo) => {
     console.log("handleDestroyTodo", todo);
     axios.delete(`http://localhost:3000/todos/${todo.id}.json`).then((response) => {

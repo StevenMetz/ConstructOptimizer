@@ -28,7 +28,6 @@ export function Punchin() {
   };
   const handlePunchIn = () => {
     setIsPunchedIn(true);
-
     handleCreatePunchIn();
   };
   const [time, setTime] = useState(moment(new Date()).format("MMMM Do YYYY, h:mm:ss a"));
