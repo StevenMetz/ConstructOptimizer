@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ImageInput } from "./ImageInput";
 export function EmployeeShow(props) {
   const [isManager, setIsManager] = useState(null);
   const [employeeRole, setEmployeeRole] = useState("Manager");
@@ -6,7 +7,7 @@ export function EmployeeShow(props) {
   useEffect(() => {
     setIsManager(props.employee.manager), setEmployeeTimeClock(props.employee.time_clock);
     console.log(employeeTimeClock);
-  }, [isManager]);
+  }, []);
   function handleClick() {
     props.onDestroyEmployee(props.employee);
   }
@@ -39,20 +40,33 @@ export function EmployeeShow(props) {
               <label className="form-label">Address</label>
               <input type="text" name="address" className="form-control" defaultValue={props.employee.address} />
             </div>
-            <div className="col-4">
-              <label className="form-label">Picture</label>
-              <input type="text" name="image" className="form-control" />
+            <div className="col-md-4">
+              <label className="form-label">City</label>
+              <input type="text" name="city" className="form-control" defaultValue={props.employee.city} />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">State</label>
+              <input type="text" name="state" className="form-control" defaultValue={props.employee.state} />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Zip Code</label>
+              <input type="text" name="zip_code" className="form-control" defaultValue={props.employee.zip_code} />
+            </div>
+            <div>
+              <label className="form-label-md"> Profile Image</label>
+              <ImageInput />
             </div>
             <div>
               <div>
                 <label className="form-label-md">Role </label>
                 <select
-                  defaultValue={false}
+                  defaultValue={isManager}
                   value={isManager}
                   name="manager"
                   className="form-select-auto"
                   aria-label="Default select example"
                 >
+                  <option selected>Select role</option>
                   <option value={false}>Employee</option>
                   <option value={true}>Manager</option>
                 </select>

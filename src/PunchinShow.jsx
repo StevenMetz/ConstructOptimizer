@@ -13,11 +13,11 @@ export function punchInShow(props) {
           <form className="row g-4" onSubmit={handleSubmit}>
             <div>
               <label className="form-label"> Time in</label>
-              <input type="date" name="time_in" required />
+              <input defaultValue={props.time_in} type="date" name="time_in" required />
             </div>
             <div>
               <label className="form-label"> Time Out</label>
-              <input type="date" name="time_out" required />
+              <input defaultValue={props.time_out} type="date" name="time_out" required />
             </div>
             <button type="submit" className="btn btn-success">
               Submit

@@ -13,6 +13,7 @@ export function Punchin() {
       setPunchIn([...punchIn, response.data]);
       console.log(response.data);
       setPunchInId(response.data.id);
+      setTimeIn(punchIn.time_in);
     });
   };
   const handleUpdatePunchIn = () => {
@@ -38,6 +39,7 @@ export function Punchin() {
     const currentTime = moment(new Date()).format("MMMM Do YYYY, h:mm:ss a");
     setTime(currentTime);
   };
+  useEffect(() => {}, []);
   setInterval(getTime, 1000);
   return (
     <div>
