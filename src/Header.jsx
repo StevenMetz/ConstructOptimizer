@@ -3,7 +3,7 @@ export function Header() {
   let authenticationLinks;
   if (localStorage.jwt !== undefined) {
     authenticationLinks = (
-      <li className="nav-item bs-white">
+      <li className="nav-item text-white">
         <LogoutLink />
       </li>
     );

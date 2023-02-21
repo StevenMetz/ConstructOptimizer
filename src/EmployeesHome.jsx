@@ -17,10 +17,14 @@ export function EmployeesHome() {
       setEmployees(response.data);
     });
   };
-  const handleUpdateEmployee = (id, params) => {
-    console.log(handleUpdateEmployee, "yo", params);
-    axios.patch(`http://localhost:3000/employees/${id}.json`, params).then((response) => {
-      console.log(response.data);
+  async function handleUpdateEmployee(id, params) {
+    try {
+      const response = await axios.patch(`http://localhost:3000/employees/${id}.json`, params, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("123", response.data);
       setEmployees(
         employees.map((employee) => {
           if (employee.id === response.data.id) {
@@ -31,8 +35,27 @@ export function EmployeesHome() {
         })
       );
       handleClose();
-    });
-  };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // const handleUpdateEmployee = (id, params) => {
+  //   console.log(handleUpdateEmployee, "yo", params);
+  //   axios.patch(`http://localhost:3000/employees/${id}.json`, params).then((response) => {
+  //     console.log(response.data);
+  //     setEmployees(
+  //       employees.map((employee) => {
+  //         if (employee.id === response.data.id) {
+  //           return response.data;
+  //         } else {
+  //           return employee;
+  //         }
+  //       })
+  //     );
+  //     handleClose();
+  //   });
+  // };
   const handleClose = () => {
     console.log("handleClose");
     setIsEmployeeShowVisible(false);
