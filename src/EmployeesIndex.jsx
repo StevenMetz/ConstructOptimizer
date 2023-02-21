@@ -16,19 +16,21 @@ export function EmployeesIndex(props) {
     };
     return (
       <div className="container" key={employee.id}>
-        <div className=" row gx-5">
+        <div className=" col-6">
           <div className="card">
-            <img src={employee.image} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
-              <p> Email: {employee.email}</p>
+            <div className="row-4">
+              <img src={employee.image} className="card-img-top rounded mx-auto d-block" alt="" />
+              <div className="card-body">
+                <h5>Name: {` ${employee.first_name} ${employee.last_name}`}</h5>
+                <p> Email: {employee.email}</p>
+              </div>
+              <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
+                More
+              </button>{" "}
+              <button onClick={handleEmployeeTimeClockShow} className="btn btn-primary">
+                Time Clock
+              </button>
             </div>
-            <button onClick={() => props.onShowEmployee(employee)} className="btn btn-primary">
-              More
-            </button>{" "}
-            <button onClick={handleEmployeeTimeClockShow} className="btn btn-primary">
-              Time Clock
-            </button>
           </div>
         </div>
       </div>

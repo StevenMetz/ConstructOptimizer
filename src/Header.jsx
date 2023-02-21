@@ -3,17 +3,10 @@ export function Header() {
   let authenticationLinks;
   if (localStorage.jwt !== undefined) {
     authenticationLinks = (
-      <li className="nav-item text-white">
-        <LogoutLink />
-      </li>
-    );
-  }
-  return (
-    <header id="header">
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand text-white" href="/todos">
-            Construction To Do
+            ConstructOptimizer
           </a>
           <button
             className="navbar-toggler"
@@ -33,7 +26,10 @@ export function Header() {
                   Home
                 </a>
               </li>
-              {authenticationLinks}
+              <li className="nav-item text-white">
+                <LogoutLink />
+              </li>
+
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle text-white"
@@ -75,6 +71,32 @@ export function Header() {
           </div>
         </div>
       </nav>
+    );
+  } else {
+    authenticationLinks = (
+      <nav className="navbar navbar-expand-lg bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand text-white" href="/">
+            ConstructOptimizer
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    );
+  }
+  return (
+    <header id="header">
+      <div>{authenticationLinks}</div>
     </header>
   );
 }
