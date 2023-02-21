@@ -2,7 +2,7 @@
 
 # ConstructOptimizer
 
-Construction Tasks is an application made for construction Foreman looking to assign tasks mulitple tasks to employees with the expectation that instead of them coming up to you constantly interupting your work that they can look at this app and see what tasks have been assigned to them. They have the ability to check done or undone incase they accidently clicked done but realized they didn't actually finish the task.
+ConstructOptimizer is an application made for construction Foreman looking to assign tasks mulitple tasks to employees with the expectation that instead of them coming up to you constantly interupting your work that they can look at this app and see what tasks have been assigned to them. They have the ability to check done or undone incase they accidently clicked done but realized they didn't actually finish the task.
 
 Application built with React.js for the Front End and ruby on rails for the back end.
 ## Login Page
