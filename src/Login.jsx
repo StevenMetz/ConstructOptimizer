@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Signup } from "./Signup";
 import { Modal } from "./Modal";
+import { render } from "react-dom";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -51,50 +52,55 @@ export function Login() {
   };
 
   return (
-    <div id="login">
-      <ul>
-        {errors.map((error) => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
+    <div className="background-home">
       <div className="text-center">
-        <h3 className="color-white">Login</h3>
-        <hr />
         <form className="myForm" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="color-white" for="exampleInputEmail1">
-              Email address
-            </label>
-            <input type="email" name="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
-          </div>
-          <div className="form-group">
-            <label className="color-white" for="exampleInputPassword1">
-              Password
-            </label>
-            <div className="input-group mb3">
-              <input
-                type={passwordType}
-                onChange={handlePasswordChange}
-                value={passwordInput}
-                name="password"
-                class="form-control"
-                placeholder="Password"
-              />
-              <span class="btn btn-outline-primary" onClick={togglePassword} id="button-addon1">
-                SHOW
-              </span>
+          <div className="card text-bg-dark" id="card-login">
+            <h2>Login</h2>
+            <br />
+            <div className="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" name="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
             </div>
+            <br />
+            <div className="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <div className="input-group mb3">
+                <input
+                  type={passwordType}
+                  onChange={handlePasswordChange}
+                  value={passwordInput}
+                  name="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+
+                <span className="btn btn-outline-primary" onClick={togglePassword} id="button-addon1">
+                  SHOW
+                </span>
+              </div>
+
+              {errors.map((error) => (
+                <div className="errors" key={error}>
+                  {error}
+                </div>
+              ))}
+            </div>
+            <br />
+
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+            <br />
+            <button onClick={handleSignupShow} className="btn btn-primary">
+              Signup
+            </button>
+            <br />
+
+            <button type="button" className="btn btn-primary">
+              Forgot Password
+            </button>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>{" "}
-          <button onClick={handleSignupShow} className="btn btn-primary">
-            Signup
-          </button>
-          {"    "}
-          <button type="button" className="btn btn-primary">
-            Forgot Password
-          </button>
         </form>
       </div>
       <Modal show={isSignupVisible} onClose={handleSignupClose}>

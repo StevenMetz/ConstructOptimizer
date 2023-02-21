@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
 }
 .scrollable-div {
   background-color: #faf8f8;
@@ -9,13 +10,23 @@ html {
   text-align: justify;
   padding: 20px;
 }
-
-#login{
-  background-image:url(./assets/house.jpeg);
-  height: 200vh;
-  width: 200vh;
+.background-home{
+ background-image:url(./assets/house.jpeg);
+ min-height: fit-content;
+ height: 100vh;
+ width: 100vw;
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center center;
+}
+#footer {
+  background-color: #212529;
+  width: 100vw;
 }
 
+#header{
+  width: 100vw;
+}
 .color-white{
   color: white;
 }
@@ -23,8 +34,18 @@ html {
   min-width: 500px;
   position: absolute;
   text-align: center;
-  top: 50%;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2.5rem
+}
+.errors {
+  color: white;
+  font-size: 20px;
+}
+#card-login{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }

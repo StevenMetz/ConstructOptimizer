@@ -14,6 +14,11 @@ export function TodosIndex(props) {
         <div key={todo.id}>
           <h2>{todo.name}</h2>
           <p>{todo.description}</p>
+          <p>
+            <strong>Assigned to:</strong>
+            {` ${todo.employee_first}
+             ${todo.employee_last}`}
+          </p>
           {todo.done === false && (
             <button
               name="done"
