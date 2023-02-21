@@ -13,6 +13,7 @@ Application built with React.js for the Front End and ruby on rails for the back
 ## Task page
 
 <img width="1511" alt="image" src="https://user-images.githubusercontent.com/108624366/220231605-03f5af9b-fa20-4172-8b81-528c5399fd82.png">
+
 ## Editing Task
 
 <img width="1205" alt="image" src="https://user-images.githubusercontent.com/108624366/220231714-4c273263-c533-42cd-9e2b-3bd6c8ce815e.png">
