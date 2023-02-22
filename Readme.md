@@ -30,6 +30,11 @@ Application built with React.js for the Front End and ruby on rails for the back
 
 <img width="1511" alt="image" src="https://user-images.githubusercontent.com/108624366/220232206-b0327a05-6066-437d-9b12-ebdc34562881.png">
 
+## While Punched In
+
+<img width="721" alt="image" src="https://user-images.githubusercontent.com/108624366/220492504-dedc91f8-18c6-43d5-b5c3-df85f0d43fcb.png">
+
+
 ## Installation
 
 Check for node to be installed
