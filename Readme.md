@@ -28,7 +28,7 @@ Application built with React.js for the Front End and ruby on rails for the back
 
 ## Employee Time Clock
 
-<img width="1511" alt="image" src="https://user-images.githubusercontent.com/108624366/220232206-b0327a05-6066-437d-9b12-ebdc34562881.png">
+<img width="939" alt="image" src="https://user-images.githubusercontent.com/108624366/220492681-2cacf9af-8f2d-48a7-9206-7b2ae1e0e3d6.png">
 
 ## While Punched In
 
